@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+    Pass by reference
+*/
 class Treasure: NSObject{
     
     let what:String
