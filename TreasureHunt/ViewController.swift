@@ -66,6 +66,7 @@ extension ViewController: MKMapViewDelegate {
                 view?.animatesDrop = false
                 view?.calloutOffset = CGPoint(x: -10, y: 5)
                 view?.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+                view?.pinColor = treasure.pinColor()
             }
             else {
                 view?.annotation = treasure

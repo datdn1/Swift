@@ -30,6 +30,10 @@ class Treasure: NSObject{
         self.what = what
         self.location = location
     }
+    
+    func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Red
+    }
 }
 
 class HistoryTreasure : Treasure {
@@ -39,6 +43,10 @@ class HistoryTreasure : Treasure {
         let location = Location(long: long, lat: lat)
         super.init(what: what, location: location)          // must call designted initializer of base class
     }
+    
+    override func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Green
+    }
 }
 
 class FactTreasure: Treasure {
@@ -47,6 +55,10 @@ class FactTreasure: Treasure {
         self.fact = fact
         let location = Location(long: long, lat: lat)
         super.init(what: what, location: location)
+    }
+    
+    override func pinColor() -> MKPinAnnotationColor {
+        return MKPinAnnotationColor.Purple
     }
 }
 
