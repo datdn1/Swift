@@ -9,6 +9,10 @@
 import UIKit
 import MapKit
 
+protocol Equatable {
+    func ==(lhs: Self, rhs:Self) -> Bool
+}
+
 /*
     Pass by value
 */
@@ -50,5 +54,12 @@ extension Location {
     var mapPoint: MKMapPoint {
         return MKMapPointForCoordinate(self.coordinate)
     }
+}
+
+extension Location : Equatable {
+}
+
+func ==(lhs: Location, rhs:Location) -> Bool {
+    return (lhs.lat == rhs.lat) && (lhs.long == rhs.long)
 }
 
