@@ -52,6 +52,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Treasure Hunt" id="WNi-bi-ZRf"/>
+                    <connections>
+                        <outlet property="mapView" destination="AOf-dP-hum" id="tME-K4-85D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

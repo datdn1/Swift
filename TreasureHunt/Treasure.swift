@@ -33,7 +33,7 @@ class Treasure: NSObject{
 
 class HistoryTreasure : Treasure {
     let year: Int
-    init(what: String, long: Double, lat: Double, year: Int) {
+    init(what: String, year: Int, lat: Double, long: Double) {
         self.year = year    // should direct initialize properties of subclass
         let location = Location(long: long, lat: lat)
         super.init(what: what, location: location)          // must call designted initializer of base class
@@ -42,7 +42,7 @@ class HistoryTreasure : Treasure {
 
 class FactTreasure: Treasure {
     let fact: String
-    init(what: String, long: Double, lat: Double, fact: String) {
+    init(what: String, fact: String, lat: Double, long: Double) {
         self.fact = fact
         let location = Location(long: long, lat: lat)
         super.init(what: what, location: location)
@@ -51,8 +51,8 @@ class FactTreasure: Treasure {
 
 class HQTreasure : Treasure {
     let company: String
-    init(cm: String, long: Double, lat: Double) {
-        self.company = cm
+    init(company: String, lat: Double, long: Double) {
+        self.company = company
         let location = Location(long: long, lat: lat)
         super.init(what: company + " headquarters", location: location)
     }
