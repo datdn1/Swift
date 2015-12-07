@@ -34,8 +34,15 @@ struct Location {
     // let structB  = Struct()
     // structA.foo  = 1.0       -- can change 
     // structB.foo  = 2.0       -- can't change because it's let reference although foo property is var variable
-    
+}
+
+extension Location {
     var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: self.lat, longitude: self.long)
     }
+    
+    var mapPoint: MKMapPoint {
+        return MKMapPointForCoordinate(self.coordinate)
+    }
 }
+
