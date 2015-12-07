@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 /*
     Pass by reference
@@ -55,6 +56,21 @@ class HQTreasure : Treasure {
         self.company = company
         let location = Location(long: long, lat: lat)
         super.init(what: company + " headquarters", location: location)
+    }
+}
+
+// extension logic code 
+// add new properties(only Swift) and methods(Object-C + Swift)
+extension Treasure: MKAnnotation {
+    
+    // computed properties
+    // only using var keyword
+    var coordinate: CLLocationCoordinate2D {
+        return self.location.coordinate
+    }
+    
+    var title: String? {
+        return self.what
     }
 }
 
