@@ -16,15 +16,21 @@ class Treasure: NSObject{
     let what:String
     let location:Location
     
-    init(what: String, long: Double, lat: Double) {
-        self.what = what
-        self.location = Location(long: long, lat:lat)
+    // using convenience initialize
+    // not initialize all properties 
+    // and must call designated initializer 
+    convenience init(what: String, long: Double, lat: Double) {
+//        self.what = what
+//        self.location = Location(long: long, lat:lat)
+        self.init(what:what, location: Location(long: long, lat:lat))
     }
     
     init(what: String, location: Location) {
         self.what = what
         self.location = location
     }
+    
+    
     
     
     
