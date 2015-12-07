@@ -38,6 +38,13 @@ class ViewController: UIViewController {
         
         self.mapView.delegate = self
         self.mapView.addAnnotations(self.treasures)
+        
+        let rectToDisplay = self.treasures.reduce(MKMapRectNull) { (var rect: MKMapRect, treasure:Treasure) -> MKMapRect in
+            let rectTreasure = MKMapRectMake(treasure.location.mapPoint.x, treasure.location.mapPoint.y, 0, 0)
+            rect = MKMapRectUnion(rect, rectTreasure)
+            return rect
+        }
+        self.mapView.setVisibleMapRect(rectToDisplay, edgePadding: UIEdgeInsets(top: 74, left: 10, bottom: 10, right: 10), animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,5 +74,7 @@ extension ViewController: MKMapViewDelegate {
         }
         return nil
     }
+    
+    
 }
 
