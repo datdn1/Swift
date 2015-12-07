@@ -59,6 +59,20 @@ extension ViewController: MKMapViewDelegate {
             if let alertable = treasure as? Alertable {
                let alert = alertable.alert()
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                let findNearestLocationAction = UIAlertAction(title: "Find Nearest", style: .Default, handler: { (action) -> Void in
+                        // sort treasure by selected annotation
+                        var sortedTreasure = self.treasures
+                        let sorted = sortedTreasure.sort({ (treasure1: Treasure, treasure2: Treasure) -> Bool in
+                            let distanceFromTreasure1 = treasure.location.distanceBetween(treasure1.location)
+                            let distanceFromTreasure2 = treasure.location.distanceBetween(treasure2.location)
+                            return distanceFromTreasure1 < distanceFromTreasure2
+                        })
+                        // deselect current annotation
+                        self.mapView.deselectAnnotation(view.annotation, animated: true)
+                        // select nearest annotation
+                        self.mapView.selectAnnotation(sorted[1], animated: true)
+                    })
+                alert.addAction(findNearestLocationAction)
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }

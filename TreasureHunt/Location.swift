@@ -34,6 +34,12 @@ struct Location {
     // let structB  = Struct()
     // structA.foo  = 1.0       -- can change 
     // structB.foo  = 2.0       -- can't change because it's let reference although foo property is var variable
+    
+    func distanceBetween(other: Location) -> Double {
+        let locationA = CLLocation(latitude: self.lat, longitude: self.long)
+        let locationB = CLLocation(latitude: other.lat, longitude: other.long)
+        return locationA.distanceFromLocation(locationB)
+    }
 }
 
 extension Location {
