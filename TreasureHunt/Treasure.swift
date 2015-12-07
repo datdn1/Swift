@@ -9,6 +9,9 @@
 import UIKit
 import MapKit
 
+@objc protocol Alertable {
+    func alert() -> UIAlertController
+}
 /*
     Pass by reference
 */
@@ -85,6 +88,31 @@ extension Treasure: MKAnnotation {
         return self.what
     }
 }
+
+extension HistoryTreasure: Alertable {
+    func alert() -> UIAlertController {
+        let alert = UIAlertController(title: "History", message: "From \(self.year)\n\(self.what)", preferredStyle: UIAlertControllerStyle.Alert)
+        return alert
+    }
+}
+
+extension FactTreasure: Alertable { func alert() -> UIAlertController {
+    let alert = UIAlertController(
+    title: "Fact",
+    message: "\(self.what):\n\(self.fact)", preferredStyle: UIAlertControllerStyle.Alert)
+    return alert }
+}
+
+extension HQTreasure: Alertable { func alert() -> UIAlertController {
+        let alert = UIAlertController(
+        title: "Headquarters",
+        message: "The headquarters of \(self.company)", preferredStyle: UIAlertControllerStyle.Alert)
+        return alert }
+}
+
+
+
+
 
 
 
