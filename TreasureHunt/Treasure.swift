@@ -8,18 +8,21 @@
 
 import UIKit
 
-class Treasure: NSObject {
+class Treasure: NSObject{
     
     let what:String
-    let long:Double
-    let lat:Double
+    let location:Location
     
     init(what: String, long: Double, lat: Double) {
         self.what = what
-        self.long = long
-        self.lat = lat
+        self.location = Location(long: long, lat:lat)
+    }
+    
+    init(what: String, location: Location) {
+        self.what = what
+        self.location = location
     }
     
     
-
+    
 }
